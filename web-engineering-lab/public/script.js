@@ -1,15 +1,15 @@
-function greet(name) {
-  return `Hello, ${name}!`;
-}
+const links = document.querySelectorAll('nav a');
 
-if (typeof document !== "undefined") {
-  document.addEventListener("DOMContentLoaded", () => {
-    const heading = document.getElementById("greeting");
-    heading.textContent = greet("Muhammad Kaif");
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (!entry.isIntersecting) return;
+
+    const link = document.querySelector(`nav a[href="#${entry.target.id}"]`);
+    if (!link) return;
+
+    links.forEach((l) => l.removeAttribute('aria-current'));
+    link.setAttribute('aria-current', 'location');
   });
-}
+}, { threshold: 0.5 });
 
-// Export for Node's test runner (ignored by the browser)
-if (typeof module !== "undefined") {
-  module.exports = { greet };
-}
+document.querySelectorAll('main section').forEach((section) => observer.observe(section));

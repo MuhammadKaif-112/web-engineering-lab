@@ -1,12 +1,150 @@
-body {
-  font-family: Arial, sans-serif;
-  max-width: 700px;
-  margin: 40px auto;
-  padding: 0 20px;
-  background-color: #f4f4f4;
-  color: #333;
+:root {
+  --text: #1a1a1a;
+  --bg: #ffffff;
+  --link: #0b4a9c;
+  --focus: #ffbf00;
 }
 
-h1 {
-  color: #222;
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, Arial, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.6;
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 1rem;
+}
+
+a {
+  color: var(--link);
+}
+
+/* Skip link: hidden until focused */
+.skip-link {
+  position: absolute;
+  left: 0;
+  top: -100px;
+  background: #000;
+  color: #fff;
+  padding: 0.75rem 1rem;
+  z-index: 100;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* Visible focus for every interactive element */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+summary:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 5px #000;
+}
+
+/* main receives focus from the skip link; no ring needed on the container */
+main:focus {
+  outline: none;
+}
+
+/* Navigation */
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  padding: 0;
+}
+
+nav a[aria-current="location"] {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+/* Table */
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+caption {
+  text-align: left;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+th,
+td {
+  border: 1px solid #555;
+  padding: 0.5rem;
+  text-align: left;
+}
+
+thead th {
+  background: #e6eefb;
+}
+
+/* Figure and dividers */
+.hours-icon {
+  margin: 1rem 0;
+  color: var(--link);
+}
+
+.divider {
+  display: block;
+  margin: 2rem 0;
+}
+
+/* Form */
+label {
+  display: block;
+  font-weight: 600;
+}
+
+input[type="radio"] + label {
+  display: inline;
+  font-weight: normal;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+  width: 100%;
+  max-width: 30rem;
+  padding: 0.4rem;
+  font: inherit;
+}
+
+fieldset {
+  margin: 1rem 0;
+  padding: 0.5rem 1rem;
+}
+
+.hint {
+  display: block;
+  font-size: 0.875rem;
+  color: #444;
+}
+
+button {
+  background: #0b4a9c;
+  color: #fff;
+  border: 0;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+/* Footer */
+footer {
+  border-top: 1px solid #555;
+  margin-top: 2rem;
+  padding-top: 1rem;
 }

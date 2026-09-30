@@ -1,26 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Web Engineering Journey</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Web Engineering Lab: Accessible Page</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1 id="greeting"></h1>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
 
-  <p>
-    I'm a BS Artificial Intelligence student, currently learning the
-    fundamentals of Web Engineering. I'm interested in building practical,
-    real-world web projects and improving my development skills.
-  </p>
+  <header>
+    <h1 id="greeting">Hello, I'm Muhammad Kaif</h1>
+    <nav aria-label="Primary">
+      <ul>
+        <li><a href="#office-hours" aria-current="location">Office Hours</a></li>
+        <li><a href="#feedback">Send Feedback</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  <h2>What I expect to learn in Web Engineering:</h2>
-  <ul>
-    <li>How to structure and build responsive websites using HTML and CSS</li>
-    <li>How to write clean, testable JavaScript for interactive web pages</li>
-    <li>How to use development tools like Git, npm, ESLint, and Prettier in a real workflow</li>
-  </ul>
+  <main id="main-content" tabindex="-1">
+
+    <section id="office-hours" aria-labelledby="hours-heading">
+      <h2 id="hours-heading">Office Hours</h2>
+
+      <table>
+        <caption>Weekly office hours (Pakistan Standard Time)</caption>
+        <thead>
+          <tr>
+            <th scope="col">Day</th>
+            <th scope="col">Opens</th>
+            <th scope="col">Closes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Monday to Thursday</th>
+            <td><time datetime="09:00">9:00 AM</time></td>
+            <td><time datetime="17:00">5:00 PM</time></td>
+          </tr>
+          <tr>
+            <th scope="row">Friday</th>
+            <td><time datetime="09:00">9:00 AM</time></td>
+            <td><time datetime="13:00">1:00 PM</time></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <figure class="hours-icon">
+        <svg role="img" aria-labelledby="clock-title" width="64" height="64" viewBox="0 0 64 64">
+          <title id="clock-title">Clock showing office opening hours</title>
+          <circle cx="32" cy="32" r="28" fill="none" stroke="currentColor" stroke-width="4"/>
+          <path d="M32 16v16l10 8" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+        </svg>
+        <figcaption>Visit us during these hours.</figcaption>
+      </figure>
+    </section>
+
+    <svg class="divider" aria-hidden="true" focusable="false" viewBox="0 0 600 20" width="100%" height="20" preserveAspectRatio="none">
+      <path d="M0 10 Q 75 0 150 10 T 300 10 T 450 10 T 600 10" fill="none" stroke="#1a4d8f" stroke-width="2"/>
+    </svg>
+
+    <section id="feedback" aria-labelledby="feedback-heading">
+      <h2 id="feedback-heading">Send Feedback</h2>
+
+      <form action="#" method="post">
+        <p>
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" autocomplete="name" required>
+        </p>
+
+        <p>
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" autocomplete="email"
+                 required aria-describedby="email-hint">
+          <span id="email-hint" class="hint">We'll only use this to reply to you.</span>
+        </p>
+
+        <fieldset>
+          <legend>Topic</legend>
+          <p>
+            <input type="radio" id="topic-general" name="topic" value="general" required>
+            <label for="topic-general">General question</label>
+          </p>
+          <p>
+            <input type="radio" id="topic-bug" name="topic" value="bug">
+            <label for="topic-bug">Report a problem</label>
+          </p>
+          <p>
+            <input type="radio" id="topic-idea" name="topic" value="idea">
+            <label for="topic-idea">Suggestion</label>
+          </p>
+        </fieldset>
+
+        <p>
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+        </p>
+
+        <button type="submit">Send feedback</button>
+      </form>
+    </section>
+
+  </main>
+
+  <footer>
+    <address>
+      Muhammad Kaif<br>
+      Email: <a href="mailto:ibbiqavibin@gmail.com">ibbiqavibin@gmail.com</a><br>
+      Islamabad, Pakistan
+    </address>
+  </footer>
 
   <script src="script.js"></script>
 </body>
